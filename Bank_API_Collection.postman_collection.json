@@ -1,0 +1,375 @@
+{
+  "info": {
+    "name": "Bank API Collection",
+    "description": "Coleção completa de testes para a Bank API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Usuários",
+      "item": [
+        {
+          "name": "Criar Usuário",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao@example.com\",\n  \"senha\": \"senha123\",\n  \"cpf\": \"12345678901\",\n  \"telefone\": \"(11) 98765-4321\",\n  \"dataNascimento\": \"1990-01-15\",\n  \"endereco\": \"Rua A, 123, São Paulo\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Listar Todos os Usuários",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/usuarios",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Obter Usuário por ID",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/usuarios/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "usuarios", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Contas Bancárias",
+      "item": [
+        {
+          "name": "Obter Saldo",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/contas/saldo/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "contas", "saldo", "1"]
+            }
+          }
+        },
+        {
+          "name": "Depositar",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/contas/depositar/1?valor=1000.00",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "contas", "depositar", "1"],
+              "query": [
+                {
+                  "key": "valor",
+                  "value": "1000.00"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Sacar",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/contas/sacar/1?valor=500.00",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "contas", "sacar", "1"],
+              "query": [
+                {
+                  "key": "valor",
+                  "value": "500.00"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cartões",
+      "item": [
+        {
+          "name": "Criar Cartão",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/cartoes?usuarioId=1&titular=JOAO SILVA&dataValidade=12/25&limiteCredito=5000&tipoCartao=CREDITO",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cartoes"],
+              "query": [
+                {
+                  "key": "usuarioId",
+                  "value": "1"
+                },
+                {
+                  "key": "titular",
+                  "value": "JOAO SILVA"
+                },
+                {
+                  "key": "dataValidade",
+                  "value": "12/25"
+                },
+                {
+                  "key": "limiteCredito",
+                  "value": "5000"
+                },
+                {
+                  "key": "tipoCartao",
+                  "value": "CREDITO"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Cartões do Usuário",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/cartoes/usuario/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cartoes", "usuario", "1"]
+            }
+          }
+        },
+        {
+          "name": "Realizar Compra",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/cartoes/1/compra?valor=150.00&descricao=Compra em loja",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cartoes", "1", "compra"],
+              "query": [
+                {
+                  "key": "valor",
+                  "value": "150.00"
+                },
+                {
+                  "key": "descricao",
+                  "value": "Compra em loja"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Pagar Fatura",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/cartoes/1/pagar-fatura?valor=150.00",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cartoes", "1", "pagar-fatura"],
+              "query": [
+                {
+                  "key": "valor",
+                  "value": "150.00"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Bloquear Cartão",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/cartoes/1/bloquear",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "cartoes", "1", "bloquear"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transferências",
+      "item": [
+        {
+          "name": "Realizar Transferência",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/transferencias?usuarioOrigemId=1&usuarioDestinoId=2&valor=250.00&descricao=Pagamento&tipoTransferencia=PIX",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "transferencias"],
+              "query": [
+                {
+                  "key": "usuarioOrigemId",
+                  "value": "1"
+                },
+                {
+                  "key": "usuarioDestinoId",
+                  "value": "2"
+                },
+                {
+                  "key": "valor",
+                  "value": "250.00"
+                },
+                {
+                  "key": "descricao",
+                  "value": "Pagamento"
+                },
+                {
+                  "key": "tipoTransferencia",
+                  "value": "PIX"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Transferências Enviadas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/transferencias/enviadas/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "transferencias", "enviadas", "1"]
+            }
+          }
+        },
+        {
+          "name": "Listar Transferências Recebidas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/transferencias/recebidas/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "transferencias", "recebidas", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Empréstimos",
+      "item": [
+        {
+          "name": "Solicitar Empréstimo",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/emprestimos?usuarioId=1&valorTotal=10000&taxaJuros=5.50&numeroParcelas=12",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "emprestimos"],
+              "query": [
+                {
+                  "key": "usuarioId",
+                  "value": "1"
+                },
+                {
+                  "key": "valorTotal",
+                  "value": "10000"
+                },
+                {
+                  "key": "taxaJuros",
+                  "value": "5.50"
+                },
+                {
+                  "key": "numeroParcelas",
+                  "value": "12"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Empréstimos do Usuário",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8080/api/emprestimos/usuario/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "emprestimos", "usuario", "1"]
+            }
+          }
+        },
+        {
+          "name": "Aprovar Empréstimo",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/emprestimos/1/aprovar",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "emprestimos", "1", "aprovar"]
+            }
+          }
+        },
+        {
+          "name": "Realizar Pagamento de Empréstimo",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "http://localhost:8080/api/emprestimos/1/pagamento?valor=1000.00",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "emprestimos", "1", "pagamento"],
+              "query": [
+                {
+                  "key": "valor",
+                  "value": "1000.00"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+
