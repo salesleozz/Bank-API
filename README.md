@@ -16,11 +16,6 @@ Uma **API REST profissional e completa** para gerenciar um banco digital, constr
 8. [Estrutura do Projeto](#estrutura-do-projeto)
 9. [Endpoints da API](#endpoints-da-api)
 10. [Exemplos de Uso](#exemplos-de-uso)
-11. [Funcionalidades em Detalhes](#funcionalidades-em-detalhes)
-12. [Modelo de Dados](#modelo-de-dados)
-13. [Segurança](#segurança)
-14. [Troubleshooting](#troubleshooting)
-15. [Próximos Passos](#próximos-passos)
 
 ---
 
